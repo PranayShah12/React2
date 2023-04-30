@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { wrapperContext } from "../App";
+import { WrapperContext } from "../App";
 
 export default function Table() {
-    const { tableData } = useContext(wrapperContext);
+    const { tableData } = useContext(WrapperContext);
 
     return (
         <div className="container">

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { wrapperContext } from "../App";
+import { WrapperContext } from "../App";
 
 export default function Form() {
-    const [firstName, setFirstName, lastName, setLastName, city, setCity, tableData, setTableData] = useContext(wrapperContext)
+    const { firstName, setFirstName, lastName, setLastName, city, setCity, tableData, setTableData } = useContext(WrapperContext)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -27,14 +27,14 @@ export default function Form() {
                     </div>
                     <div className="mb-3">
                         <input type="text"
-                            placeholder="Enter First Name"
+                            placeholder="Enter Last Name"
                             className="form-control"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)} />
                     </div>
                     <div className="mb-3">
                         <input type="text"
-                            placeholder="Enter First Name"
+                            placeholder="city"
                             className="form-control"
                             value={city}
                             onChange={(e) => setCity(e.target.value)} />
