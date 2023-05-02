@@ -24,13 +24,13 @@ export default function Cocktails() {
     return (
         <div className="container py-5">
             <h2>Cocktail List</h2>
-            <hr />
-            <input
+            {/* <hr /> */}
+            {/* <input
                 // value={searchvalue}
                 placeholder="search your drinks....."
                 className="form-control"
             // onChange={(e) => setsearchvalue(e.target.value)}
-            />
+            /> */}
             <hr />
             <div className="row">
                 {Cocktaillist === null && <h1>Details Not Found.....</h1>}

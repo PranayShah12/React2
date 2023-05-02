@@ -17,11 +17,10 @@ export default function App() {
     <>
       <WrapperContext.Provider value={{
         searchFormValue, setSearchFormValue, isLogin, setIsLogin
-
       }}>
         <Navbar />
         <Routes>
-          <Route path="/Home" element={<Home />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/Cocktails" element={<PrivateRoute><Cocktails /></PrivateRoute>}></Route>
           <Route path="/Cocktails/:id" element={<Cocktaildetails />}></Route>
           <Route path="/Login" element={<Login />}></Route>

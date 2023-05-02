@@ -9,7 +9,7 @@ export default function Login() {
 
     function login() {
         setIsLogin(true);
-        navigate("/Home");
+        navigate("/");
     }
     return (
         <div className="container p-5">
