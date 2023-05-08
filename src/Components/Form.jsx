@@ -15,17 +15,24 @@ export default function Form() {
         handleEdit,
     } = useContext(WrapperContext);
 
+    // if (firstName === "") {
+    //     alert("enter value")
+    // } else {
+    //     handleSubmit()
+    // }
     function handleSubmit(e) {
         e.preventDefault();
+        if (firstName !== "" && lastName !== "" && city !== "") {
+            const date = new Date();
 
-        const date = new Date();
+            const formValue = { id: date.getTime(), firstName, lastName, city };
+            setTableData([...tableData, formValue]);
 
-        const formValue = { id: date.getTime(), firstName, lastName, city };
-        setTableData([...tableData, formValue]);
-
-        setFirstName("");
-        setLastName("");
-        setCity("");
+            setFirstName("");
+            setLastName("");
+            setCity("");
+        }
+        else { alert("enter values") }
     }
 
     return (
@@ -66,6 +73,7 @@ export default function Form() {
                                 Edit
                             </button>
                         ) : (
+
                             <button onClick={handleSubmit} className="btn btn-primary">
                                 Add
                             </button>
