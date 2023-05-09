@@ -5,20 +5,32 @@ import Table from "./Components/Table";
 
 export const WrapperContext = createContext();
 
+function getLocalStorageData() {
+  const tableData = localStorage.getItem('tableData')
+  if (tableData) {
+    return JSON.parse(tableData)
+  } else {
+    return []
+  }
+}
+
 export default function App() {
 
+  //for addition
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
-  const [tableData, setTableData] = useState([])
+  const [tableData, setTableData] = useState((getLocalStorageData()))
 
   //for editing
   const [isEdit, setIsEdit] = useState(false)
   const [editId, setEditId] = useState(null)
 
+  //for delete items
   function deleteData(id) {
 
     const filterData = tableData.filter((item) => item.id !== id)
+    localStorage.setItem('tableData', JSON.stringify(filterData))
     setTableData(filterData);
   }
 
@@ -49,6 +61,8 @@ export default function App() {
     setEditId(null)
 
     setTableData(editItems);
+
+    localStorage.setItem('tableData', JSON.stringify(editItems))
   }
 
 

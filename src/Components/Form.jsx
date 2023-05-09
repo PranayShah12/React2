@@ -15,11 +15,6 @@ export default function Form() {
         handleEdit,
     } = useContext(WrapperContext);
 
-    // if (firstName === "") {
-    //     alert("enter value")
-    // } else {
-    //     handleSubmit()
-    // }
     function handleSubmit(e) {
         e.preventDefault();
         if (firstName !== "" && lastName !== "" && city !== "") {
@@ -27,6 +22,8 @@ export default function Form() {
 
             const formValue = { id: date.getTime(), firstName, lastName, city };
             setTableData([...tableData, formValue]);
+
+            localStorage.setItem("tableData", JSON.stringify([...tableData, formValue]))
 
             setFirstName("");
             setLastName("");
