@@ -22,18 +22,6 @@ export default function App() {
   const [city, setCity] = useState("");
   const [tableData, setTableData] = useState((getLocalStorageData()))
 
-  //for editing
-  const [isEdit, setIsEdit] = useState(false)
-  const [editId, setEditId] = useState(null)
-
-  //for delete items
-  function deleteData(id) {
-
-    const filterData = tableData.filter((item) => item.id !== id)
-    localStorage.setItem('tableData', JSON.stringify(filterData))
-    setTableData(filterData);
-  }
-
   function addToEditStage(item) {
     const { id, firstName, lastName, city } = item
     setIsEdit(true)
@@ -44,26 +32,43 @@ export default function App() {
     setLastName(lastName);
   }
 
+  //for editing
+  const [isEdit, setIsEdit] = useState(false)
+  const [editId, setEditId] = useState(null)
+
   function handleEdit(e) {
     e.preventDefault()
-    const editItems = tableData.map((item) => {
-      if (item.id === editId) {
-        return { ...item, firstName, lastName, city }
-      } else {
-        return item
-      }
-    })
+    if (firstName !== "" && lastName !== "" && city !== "") {
+      const editItems = tableData.map((item) => {
+        if (item.id === editId) {
+          return { ...item, firstName, lastName, city }
+        } else {
+          return item
+        }
+      })
 
-    setFirstName("")
-    setLastName("")
-    setCity("")
-    setIsEdit(false)
-    setEditId(null)
-
-    setTableData(editItems);
-
-    localStorage.setItem('tableData', JSON.stringify(editItems))
+      setFirstName("")
+      setLastName("")
+      setCity("")
+      setIsEdit(false)
+      setEditId(null)
+      setTableData(editItems);
+      localStorage.setItem('tableData', JSON.stringify(editItems))
+    }
+    else {
+      alert("Enter Values")
+    }
   }
+
+  //for delete items
+  function deleteData(id) {
+
+    const filterData = tableData.filter((item) => item.id !== id)
+    localStorage.setItem('tableData', JSON.stringify(filterData))
+    setTableData(filterData);
+  }
+
+
 
 
   return (
