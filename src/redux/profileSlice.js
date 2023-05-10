@@ -12,4 +12,4 @@ const profileSlice = createSlice({
     }
 })
 
-export default profileSlice;
+export default profileSlice.reducer;
